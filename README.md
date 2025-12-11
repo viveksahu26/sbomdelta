@@ -1,5 +1,5 @@
 
-# 📦 sbomdelta — Vulnerability Delta Between Upstream & Hardened Images
+# sbomdelta: vulnerability delta b/w upstream & hardened Images
 
 `sbomdelta` is a **CLI tool written in Go** that calculates the **true vulnerability delta** between:
 
@@ -32,35 +32,35 @@ You may see:
 
 This tool answers:
 
-- ✅ *Which CVEs were really eliminated?*
-- ✅ *Which are new regressions?*
-- ✅ *Which are fake results due to backports?*
-- ✅ *Which packages caused the delta?*
+- *Which CVEs were really eliminated?*
+- *Which are new regressions?*
+- *Which are fake results due to backports?*
+- *Which packages caused the delta?*
 
 ## What sbomdelta Measures
 
 The delta is calculated in **three dimensions**:
 
-### 1️⃣ Package Delta
+### 1. Package Delta
 
 | Case                                 | Meaning                          |
 | ------------------------------------ | -------------------------------- |
-| Package present in **upstream only** | ✔️ Attack surface **reduced**    |
-| Package present in **hardened only** | ⚠️ New attack surface introduced |
+| Package present in **upstream only** | Attack surface **reduced**    |
+| Package present in **hardened only** | New attack surface introduced |
 | Package present in **both**          | Neutral                          |
 
-### 2️⃣ CVE Delta
+### 2. CVE Delta
 
 For every `(package + CVE)` pair:
 
 | Status               | Meaning                        |
 | -------------------- | ------------------------------ |
-| `ONLY_UPSTREAM`      | ✅ Vulnerability mitigated      |
-| `ONLY_HARDENED`      | ❌ New vulnerability introduced |
-| `BOTH_SAME_SEVERITY` | ⚠️ No security improvement     |
-| `BOTH_DIFF_SEVERITY` | ⚠️ Severity changed            |
+| `ONLY_UPSTREAM`      |  Vulnerability mitigated      |
+| `ONLY_HARDENED`      |  New vulnerability introduced |
+| `BOTH_SAME_SEVERITY` |  No security improvement     |
+| `BOTH_DIFF_SEVERITY` |  Severity changed            |
 
-### 3️⃣ Backport Delta (False Positives)
+### 3. Backport Delta (False Positives)
 
 Many Linux distros **patch CVEs without changing versions**.
 
@@ -80,9 +80,9 @@ This causes **false positives**.
 
 If you provide an optional **backport exception file**, sbomdelta will:
 
-✅ Detect them
-✅ Remove them from delta calculation
-✅ Report how many false positives were found
+- Detect them
+- Remove them from delta calculation
+- Report how many false positives were found
 
 ## Supported Input Formats
 
@@ -90,26 +90,26 @@ If you provide an optional **backport exception file**, sbomdelta will:
 
 | Format         | Supported |
 | -------------- | --------- |
-| CycloneDX JSON | ✅         |
-| SPDX JSON      | ✅         |
+| CycloneDX JSON | yes         |
+| SPDX JSON      | yes         |
 
 ### Vulnerability Scanner Formats
 
 | Scanner    | Supported |
 | ---------- | --------- |
-| Trivy JSON | ✅         |
-| Grype JSON | ✅         |
+| Trivy JSON | yes         |
+| Grype JSON | yes         |
 
 ### 🔍 Backport Exception File (Optional)
 
 | Type       | Supported |
 | ---------- | --------- |
-| Trivy JSON | ✅         |
-| Grype JSON | ✅         |
+| Trivy JSON | yes         |
+| Grype JSON | yes         |
 
 Used to suppress **backported CVEs**
 
-## 🧠 How the Delta is Computed
+## How the Delta is Computed
 
 High-level data flow:
 
@@ -124,7 +124,7 @@ Backport File   → Optional Suppression
 → Final Metrics + Colored Report
 ```
 
-## 🧱 Project Structure
+## Project Structure
 
 ```bash
 .
@@ -141,7 +141,7 @@ Backport File   → Optional Suppression
 └── README.md
 ```
 
-## 🚀 CLI Usage
+## CLI Usage
 
 ### Basic Usage (No Backport File)
 
@@ -175,7 +175,7 @@ go run main.go eval \
   --bc-vuln backports.json
 ```
 
-## 🎯 Flags Reference
+## Flags Reference
 
 | Flag        | Description                        |
 | ----------- | ---------------------------------- |
@@ -203,6 +203,6 @@ go run main.go eval \
 
 | PACKAGE@VER | CVE           | STATUS          | UPSTREAM | HARDENED |
 | ----------- | ------------- | --------------- | -------- | -------- |
-| openssl@3.0 | CVE-2024-1234 | ONLY_UPSTREAM ✅ | HIGH     | –        |
-| curl@8.1    | CVE-2023-9876 | ONLY_HARDENED ❌ | –        | CRITICAL |
-| bash@5.2    | CVE-2022-5555 | BOTH_SAME ⚠️    | MEDIUM   | MEDIUM   |
+| openssl@3.0 | CVE-2024-1234 | ONLY_UPSTREAM  | HIGH     | –        |
+| curl@8.1    | CVE-2023-9876 | ONLY_HARDENED  | –        | CRITICAL |
+| bash@5.2    | CVE-2022-5555 | BOTH_SAME     | MEDIUM   | MEDIUM   |
