@@ -3,7 +3,7 @@ package delta
 import (
 	"sort"
 
-	"github.com/viveksahu26/sbomdelta/pkg/types"
+	"github.com/interlynk-io/sbomdelta/pkg/types"
 )
 
 // ComputePackageDelta compute packages removed from hardened, added into hardened and common in both

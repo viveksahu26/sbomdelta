@@ -4,10 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/viveksahu26/sbomdelta/pkg/reporter"
-	"github.com/viveksahu26/sbomdelta/pkg/sbom"
-	"github.com/viveksahu26/sbomdelta/pkg/types"
-	"github.com/viveksahu26/sbomdelta/pkg/vuln"
+	"github.com/interlynk-io/sbomdelta/pkg/reporter"
+	"github.com/interlynk-io/sbomdelta/pkg/sbom"
+	"github.com/interlynk-io/sbomdelta/pkg/types"
+	"github.com/interlynk-io/sbomdelta/pkg/vuln"
 )
 
 // simple implementation; later you can implement a richer backport matcher.

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/viveksahu26/sbomdelta/cmd"
+	"github.com/interlynk-io/sbomdelta/cmd"
 )
 
 func main() {

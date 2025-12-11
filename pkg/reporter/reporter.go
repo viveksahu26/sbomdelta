@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/fatih/color"
-	"github.com/viveksahu26/sbomdelta/pkg/types"
+	"github.com/interlynk-io/sbomdelta/pkg/types"
 )
 
 func PrintSummaryMetrics(metrics map[string]int, removedPkgs, addedPkgs, commonPkgs []types.PkgKey) {

@@ -1,4 +1,4 @@
-module github.com/viveksahu26/sbomdelta
+module github.com/interlynk-io/sbomdelta
 
 go 1.25.1
 

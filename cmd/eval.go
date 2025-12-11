@@ -3,8 +3,8 @@ package cmd
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/viveksahu26/sbomdelta/pkg/delta"
-	"github.com/viveksahu26/sbomdelta/pkg/types"
+	"github.com/interlynk-io/sbomdelta/pkg/delta"
+	"github.com/interlynk-io/sbomdelta/pkg/types"
 )
 
 var (

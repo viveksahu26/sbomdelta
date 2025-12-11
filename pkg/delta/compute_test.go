@@ -5,7 +5,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/viveksahu26/sbomdelta/pkg/types"
+	"github.com/interlynk-io/sbomdelta/pkg/types"
 )
 
 // helper to sort []PkgKey for stable comparisons

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/viveksahu26/sbomdelta/pkg/types"
+	"github.com/interlynk-io/sbomdelta/pkg/types"
 )
 
 func LoadVulns(path string, format types.VulnFormat) (map[types.VulnKey]types.VulnFinding, error) {

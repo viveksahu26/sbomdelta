@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/viveksahu26/sbomdelta/pkg/types"
+	"github.com/interlynk-io/sbomdelta/pkg/types"
 )
 
 func LoadSBOM(path string, format types.SBOMFormat) (map[types.PkgKey]types.Package, error) {

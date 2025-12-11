@@ -3,7 +3,7 @@ package vuln
 import (
 	"encoding/json"
 
-	"github.com/viveksahu26/sbomdelta/pkg/types"
+	"github.com/interlynk-io/sbomdelta/pkg/types"
 )
 
 // Minimal Grype JSON structs
