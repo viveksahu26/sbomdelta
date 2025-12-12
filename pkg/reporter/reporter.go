@@ -1,3 +1,17 @@
+// Copyright 2025 Interlynk.io
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package reporter
 
 import (
@@ -6,10 +20,11 @@ import (
 	"strings"
 
 	"github.com/fatih/color"
-	"github.com/interlynk-io/sbomdelta/pkg/types"
+	"github.com/interlynk-io/sbomdelta/pkg/bom"
+	"github.com/interlynk-io/sbomdelta/pkg/vuln"
 )
 
-func PrintSummaryMetrics(metrics map[string]int, removedPkgs, addedPkgs, commonPkgs []types.PkgKey) {
+func PrintSummaryMetrics(metrics map[string]int, removedPkgs, addedPkgs, commonPkgs []bom.PkgKey) {
 	title := color.New(color.FgCyan, color.Bold).SprintFunc()
 	// strong := color.New(color.FgWhite, color.Bold).SprintFunc()
 	ok := color.New(color.FgGreen).SprintFunc()
@@ -61,7 +76,7 @@ func padRightVisible(s string, width int) string {
 	return s + strings.Repeat(" ", width-visible)
 }
 
-func PrintDeltaTable(rows []types.DeltaRow) {
+func PrintDeltaTable(rows []vuln.DeltaRow) {
 	if len(rows) == 0 {
 		fmt.Println("No vulnerability deltas to display.")
 		return
@@ -100,11 +115,11 @@ func PrintDeltaTable(rows []types.DeltaRow) {
 		// choose colorized status string
 		var statusColored string
 		switch r.Status {
-		case types.StatusOnlyUpstream:
+		case vuln.StatusOnlyUpstream:
 			statusColored = ok(string(r.Status))
-		case types.StatusOnlyHardened:
+		case vuln.StatusOnlyHardened:
 			statusColored = bad(string(r.Status))
-		case types.StatusBothDiffSeverity:
+		case vuln.StatusBothDiffSeverity:
 			statusColored = warn(string(r.Status))
 		default:
 			statusColored = neutral(string(r.Status))
